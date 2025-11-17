@@ -1466,7 +1466,7 @@ def stream_random_bytes(n):
       200:
         description: Bytes.
     """
-    n = min(n, 100 * 1024)  # set 100KB limit
+    n = min(n, 128 * 1024 * 1024)  # set 128MB limit
 
     params = CaseInsensitiveDict(request.args.items())
     if "seed" in params:
@@ -1477,17 +1477,24 @@ def stream_random_bytes(n):
     else:
         chunk_size = 10 * 1024
 
+    pattern = bytes(random.randint(0, 255) for _ in range(1023))
+    pattern_len = len(pattern)
+
     def generate_bytes():
         chunks = bytearray()
+        bytes_remaining = n
 
-        for i in xrange(n):
-            chunks.append(random.randint(0, 255))
-            if len(chunks) == chunk_size:
-                yield (bytes(chunks))
-                chunks = bytearray()
+        while bytes_remaining > 0:
+            take = min(pattern_len, bytes_remaining)
+            chunks.extend(pattern[:take])
+            bytes_remaining -= take
+
+            while len(chunks) >= chunk_size:
+                yield bytes(chunks[:chunk_size])
+                del chunks[:chunk_size]
 
         if chunks:
-            yield (bytes(chunks))
+            yield bytes(chunks)
 
     headers = {"Content-Type": "application/octet-stream"}
 
