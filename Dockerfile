@@ -1,12 +1,15 @@
 FROM ubuntu:18.04
 
 LABEL name="httpbin"
-LABEL version="0.9.2"
+LABEL version="1.0.2"
 LABEL description="A simple HTTP service."
-LABEL org.kennethreitz.vendor="Kenneth Reitz"
+LABEL org.kennethreitz.vendor="Kenneth Reitz/Wendal Chen"
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
+
+#COPY sources.list /etc/apt/sources.list
+#COPY ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources
 
 RUN apt update -y && apt install python3-pip git -y && pip3 install --no-cache-dir pipenv
 

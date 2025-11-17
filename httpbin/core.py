@@ -96,13 +96,13 @@ template = {
         "title": "httpbin.org",
         "description": (
             "A simple HTTP Request & Response Service."
-            "<br/> <br/> <b>Run locally: </b> <code>$ docker run -p 80:80 kennethreitz/httpbin</code>"
+            "<br/> <br/> <b>Run locally: </b> <code>$ docker run -p 80:80 wendal/httpbin</code>"
         ),
         "contact": {
-            "responsibleOrganization": "Kenneth Reitz",
-            "responsibleDeveloper": "Kenneth Reitz",
-            "email": "me@kennethreitz.org",
-            "url": "https://kennethreitz.org",
+            "responsibleOrganization": "Wendal Chen",
+            "responsibleDeveloper": "Wendal Chen",
+            "email": "wendal1985@gmail.com",
+            "url": "https://wendal.cn",
         },
         # "termsOfService": "http://me.com/terms",
         "version": version,

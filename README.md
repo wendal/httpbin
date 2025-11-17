@@ -1,5 +1,6 @@
 # httpbin(1): HTTP Request & Response Service
 
+modify by Wendal Chen
 
 A [Kenneth Reitz](http://kennethreitz.org/bitcoin) Project.
 
@@ -7,8 +8,8 @@ A [Kenneth Reitz](http://kennethreitz.org/bitcoin) Project.
 
 Run locally:
 ```sh
-docker pull kennethreitz/httpbin
-docker run -p 80:80 kennethreitz/httpbin
+docker pull wendal/httpbin
+docker run -p 80:80 wendal/httpbin
 ```
 
 See http://httpbin.org for more information.
